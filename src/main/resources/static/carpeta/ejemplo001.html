@@ -5,6 +5,50 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <script>
+        function fechaHora() {
+            let fechaActual = new Date();
+            const ahora = new Date();
+
+            // Obtener la hora, minutos y segundos
+            let horas = ahora.getHours();
+            let minutos = ahora.getMinutes();
+            let segundos = ahora.getSeconds();
+            let dia = ahora.getDate();
+            let mes = ahora.getMonth();
+            let anio = ahora.getFullYear();
+            let diasSemana = ["Domingo", "Lunes", "Martes", "Miercoles", "Jueves", "Viernes", "Sabado"];
+            const meses = [
+                
+                "Enero",
+                "Febrero",
+                "Marzo",
+                "Abril",
+                "Mayo",
+                "Junio",
+                "Julio",
+                "Agosto",
+                "Septiembre",
+                "Octubre",
+                "Noviembre",
+                "Diciembre"
+                
+            ];
+
+            // Asegurar que minutos y segundos tengan dos dígitos
+            minutos = minutos < 10 ? '0' + minutos : minutos;
+            segundos = segundos < 10 ? '0' + segundos : segundos;
+            mesActual = meses[mes];
+
+
+            // Mostrar la hora en el formato HH:MM:SS
+            const horaFormateada = `${dia} ${mesActual} de ${anio} \n ${horas}:${minutos}:${segundos}`;
+
+            // Mostrar la hora en el elemento con id "hora"
+            document.getElementById('hora').textContent = horaFormateada;
+        }
+        setInterval(fechaHora, 1000);
+    </script>
     <style>
         html {
             box-sizing: border-box;
@@ -14,19 +58,44 @@
         }
 
         body {
-                
+
             margin: auto;
             justify-content: center;
-            
+
         }
+
         .container {
+            width:100%;
             color: white;
-            width: 75%;
             text-align: center;
         }
-        hr{
+        .container p {
+            display: inline;
+            width: 70%;
+        }
+
+        .formulario {
+
+            color: white;
+
+            text-align: center;
+        }
+
+        hr {
             color: rgb(255, 145, 0);
             text-shadow: 1px;
+        }
+
+        label {
+            color: white;
+        }
+
+        footer {
+            text-align: center;
+        }
+
+        #hora {
+            color: white;
         }
     </style>
 </head>
@@ -39,8 +108,23 @@
             commodi a dolorem officia possimus corporis doloribus, ex similique tempore laudantium rerum facilis
             incidunt
             expedita suscipit!</p>
+
     </div>
-    
+    <div class="formulario">
+        <form action="" method="POST">
+            <p><label for="">Nombre</label></p>
+            <input type="text" name="nombre">
+            <p><label for="">Apellidos</label></p>
+            <input type="text" name="apellidos">
+            <p><button type="submit">Aceptar</button></p>
+        </form>
+    </div>
+    <footer>
+        <p id="hora">
+            <Script>fechaHora()</Script>
+        </p>
+    </footer>
+
 </body>
 
 </html>
